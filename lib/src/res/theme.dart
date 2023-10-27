@@ -24,11 +24,12 @@ class PawThemes {
       scaffoldBackgroundColor: PawAppColors.pawWhite,
       brightness: Brightness.light,
       extensions: <ThemeExtension<dynamic>>[
-        const Palette(
+        const PawPallete(
           textColor: PawAppColors.pawBlack,
           backgroundColor: PawAppColors.pawWhite,
+          primaryColor: PawAppColors.primaryColor,
         ),
-        AppTypography(
+        PawTypography(
           large: PawsTextStyle.large,
           medium: PawsTextStyle.medium,
           small: PawsTextStyle.small,
@@ -55,10 +56,12 @@ class PawThemes {
       scaffoldBackgroundColor: PawAppColors.pawBlack,
       brightness: Brightness.dark,
       extensions: <ThemeExtension<dynamic>>[
-        const Palette(
-            textColor: PawAppColors.pawWhite,
-            backgroundColor: PawAppColors.pawBlack),
-        AppTypography(
+        const PawPallete(
+          textColor: PawAppColors.pawWhite,
+          backgroundColor: PawAppColors.pawBlack,
+          primaryColor: PawAppColors.primaryColor,
+        ),
+        PawTypography(
           large: PawsTextStyle.large,
           medium: PawsTextStyle.medium,
           small: PawsTextStyle.small,

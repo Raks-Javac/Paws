@@ -7,7 +7,7 @@ class PawsTextStyle {
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
     fontFamily: PawsStrings.appPrimaryFontName,
-    fontSize: 20.sp,
+    fontSize: 24.sp,
   );
 
   static TextStyle medium = TextStyle(

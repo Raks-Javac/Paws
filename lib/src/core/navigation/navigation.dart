@@ -93,15 +93,9 @@ class AppRouter {
       arguments: arguments,
     );
   }
-
-  void dismissKeyboard() {
-    FocusManager.instance.primaryFocus?.unfocus();
-  }
 }
 
 class AppLevelRouter extends AppRouter {
-  AppLevelRouter();
-
   @override
   NavigatorState get navigatorState =>
       NavigatorKey.appNavigatorKey.currentState!;
