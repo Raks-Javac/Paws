@@ -8,10 +8,12 @@ import 'package:paws/src/res/theme_extensions/app_typography.dart';
 import 'package:paws/src/shared/loader.dart';
 
 class ImageViewAndTitle extends StatelessWidget {
+  final Future<String>? future;
   final String? title;
   final Function()? ontap;
   const ImageViewAndTitle({
     required this.title,
+    this.future,
     this.ontap,
     super.key,
   });
@@ -33,7 +35,8 @@ class ImageViewAndTitle extends StatelessWidget {
         child: Stack(
           children: [
             FutureBuilder(
-                future: dogRepository.getRandomImageByBreed(title ?? ""),
+                future:
+                    future ?? dogRepository.getRandomImageByBreed(title ?? ""),
                 builder: (context, shot) {
                   if (shot.data != null) {
                     return CachedNetworkImage(

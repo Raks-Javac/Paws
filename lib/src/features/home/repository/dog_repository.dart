@@ -6,8 +6,7 @@ import 'package:paws/src/features/home/data/get_all_breeds_model.dart';
 abstract class AbstractDogRepository {
   Future<GetAllDogModel> getAllBreeds();
   Future<String> getRandomImageByBreed(String breedName);
-  Future<Map<String, dynamic>> getRandomImageBySubBreed(
-      String breedName, String subBreed);
+  Future<String> getRandomImageBySubBreed(String breedName, String subBreed);
   Future<Map<String, dynamic>> imageListByBreed(String breedName);
   Future<Map<String, dynamic>> imageListBySubBreed(
       String breedName, String subBreedName);
@@ -40,26 +39,26 @@ class DogRepository implements AbstractDogRepository {
   }
 
   @override
-  Future<Map<String, dynamic>> imageListByBreed(String breedName) {
-    final getAllBreedsRequest = _networkService.getRequest(
+  Future<Map<String, dynamic>> imageListByBreed(String breedName) async {
+    final getAllBreedsRequest = await _networkService.getRequest(
         "${AppUrls.breedService}/$breedName${AppUrls.imageListByBreed}");
 
     return getAllBreedsRequest;
   }
 
   @override
-  Future<Map<String, dynamic>> getRandomImageBySubBreed(
-      String breedName, String subBreed) {
-    final getAllBreedsRequest = _networkService.getRequest(
+  Future<String> getRandomImageBySubBreed(
+      String breedName, String subBreed) async {
+    final getSubBreedRandomImage = await _networkService.getRequest(
         "${AppUrls.breedService}/$breedName/$subBreed${AppUrls.getRandomImageByBreedUrl}");
-
-    return getAllBreedsRequest;
+    ApiResponse response = ApiResponse.fromJson(getSubBreedRandomImage);
+    return response.message;
   }
 
   @override
   Future<Map<String, dynamic>> imageListBySubBreed(
-      String breedName, String subBreedName) {
-    final getAllBreedsRequest = _networkService.getRequest(
+      String breedName, String subBreedName) async {
+    final getAllBreedsRequest = await _networkService.getRequest(
         "${AppUrls.breedService}/$breedName/$subBreedName/${AppUrls.imageListByBreed}");
 
     return getAllBreedsRequest;

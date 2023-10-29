@@ -9,6 +9,7 @@ import 'package:paws/src/res/colors.dart';
 import 'package:paws/src/res/strings.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
+import 'package:paws/src/shared/image_view.dart';
 import 'package:paws/src/shared/loader.dart';
 import 'package:paws/src/shared/render_assets.dart';
 
@@ -106,59 +107,10 @@ class SubBreedViewScreen extends StatelessWidget {
                   for (int i = 0;
                       i < subBreedArgument.subBreed!.length;
                       i++) ...[
-                    Container(
-                      height: 220.sp,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.sp),
-                      ),
-                      child: CachedNetworkImage(
-                        imageUrl:
-                            "https://images.dog.ceo/breeds/spitz-japanese/tofu.jpg",
-                        imageBuilder: (context, imageProvider) => Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.sp),
-                                image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  height: 45.sp,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color:
-                                        PawAppColors.pawBlack.withOpacity(0.5),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20.sp),
-                                      bottomRight: Radius.circular(20.sp),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    subBreedArgument.subBreed?[i] ?? "",
-                                    style: typography?.medium?.copyWith(
-                                      color: PawAppColors.pawWhite,
-                                    ),
-                                  ).center,
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        placeholder: (context, url) => ImageLoader(
-                          height: 45.sp,
-                          width: double.infinity,
-                        ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    ),
+                    ImageViewAndTitle(
+                        future: dogRepository.getRandomImageBySubBreed(
+                            "", subBreedArgument.subBreed?[i] ?? ""),
+                        title: subBreedArgument.subBreed?[i] ?? ""),
                     addVerticalSpacing(20),
                   ]
                 ],
