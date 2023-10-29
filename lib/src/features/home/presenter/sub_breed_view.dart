@@ -141,7 +141,7 @@ class SubBreedViewScreen extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    "Helofff Heighend well",
+                                    subBreedArgument.subBreed?[i] ?? "",
                                     style: typography?.medium?.copyWith(
                                       color: PawAppColors.pawWhite,
                                     ),
