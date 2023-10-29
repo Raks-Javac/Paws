@@ -32,7 +32,7 @@ A Flutter app that demonstrates how to create a dog image dashboard using the Do
 
    ```
    flutter run
-   
+
 ## Project Structure
 
 
@@ -43,3 +43,21 @@ The project follows a structured architecture that includes different layers:
     /data: Contains the data models
     /controller: Provides data to the UI and manages app state using the provider package.
     /presenter || /presentation: Contains the UI components and the main view where it contains a subfolder "/widgets" for widgets only related to that feature
+    /shared: for all round widgets, where widgets naming starts with "PawWidgets.." which makes it easy to get reusable widgets.
+    /res: contains the app resources just like native development where the /res folder contains the styles, strings, assets and theme used in the app.
+
+##  Dependencies
+
+
+   - flutter: The Flutter SDK.
+   - provider: For state management and view models.
+   - http: For making HTTP requests to the Dog API.
+   - flutter_screenutil: for responsive styling 
+   - flutter_svg: for svgs and icon management in the app
+   - lottie: for loading lottie animations
+   - cached_network_image: for each loading of images and image loading optimization
+   - shimmer: for loading animations
+   - flutter_launcher_icons: for setting the app icon easily without having to go into the native folders
+
+
+    
