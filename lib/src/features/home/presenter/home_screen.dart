@@ -7,11 +7,14 @@ import 'package:paws/src/res/assets.dart';
 import 'package:paws/src/res/strings.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
+import 'package:paws/src/shared/logger.dart';
 import 'package:paws/src/shared/render_assets.dart';
 import 'package:paws/src/shared/search_bar.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +52,13 @@ class HomeScreen extends StatelessWidget {
                     svgPath: searchIcon,
                   ).marginSymmetric(horizontal: 5),
                   addHorizontalSpacing(5),
-                  const Expanded(
-                    child: PawWidgetsSearchBar(),
+                  Expanded(
+                    child: PawWidgetsSearchBar(
+                      controller: textEditingController,
+                      onChanged: (val) {
+                        Logger.logInfo(val);
+                      },
+                    ),
                   )
                 ],
               )),

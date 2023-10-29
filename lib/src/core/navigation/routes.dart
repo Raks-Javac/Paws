@@ -18,7 +18,7 @@ class AppRoute {
   static Route getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case homeScreen:
-        return _getPageRoute(routeSettings, const HomeScreen());
+        return _getPageRoute(routeSettings, HomeScreen());
       case subBreedView:
         return _getPageRoute(routeSettings, const SubBreedViewScreen());
 

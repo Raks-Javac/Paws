@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
+import 'package:paws/src/shared/logger.dart';
 
 class PawWidgetsSearchBar extends StatelessWidget {
   final String? hintText;
@@ -23,6 +24,7 @@ class PawWidgetsSearchBar extends StatelessWidget {
       cursorColor: palette!.primaryColor,
       controller: controller,
       onChanged: (val) {
+        Logger.logInfo(val);
         if (onChanged != null) onChanged!(val);
       },
       decoration: InputDecoration(

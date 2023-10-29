@@ -22,3 +22,24 @@ A Flutter app that demonstrates how to create a dog image dashboard using the Do
    ```bash
    git clone https://github.com/yourusername/dog_dashboard_app.git
    cd dog_dashboard_app
+
+2. **Install Dependencies:**
+
+   ```flutter pub get
+
+3. **Run the App:**
+
+   ```flutter run
+
+
+
+## Project Structure
+
+
+The project follows a structured architecture that includes different layers:
+
+    /network: Handles API requests using the http package.
+    /repository: Manages data access, interacting with the network layer.
+    /data: Contains the data models
+    /controller: Provides data to the UI and manages app state using the provider package.
+    /presenter || /presentation: Contains the UI components and the main view where it contains a subfolder "/widgets" for widgets only related to that feature
