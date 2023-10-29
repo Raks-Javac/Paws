@@ -25,11 +25,13 @@ A Flutter app that demonstrates how to create a dog image dashboard using the Do
 
 2. **Install Dependencies:**
 
-   ```flutter pub get
+   ```
+   flutter pub get
 
 3. **Run the App:**
 
-   ```flutter run
+   ```
+   flutter run
 
 
 
