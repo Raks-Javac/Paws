@@ -10,8 +10,8 @@ A Flutter app that demonstrates how to create a dog image dashboard using the Do
 4. [API Integration](#api-integration)
 3. [UI Layer](#ui-layer)
 4. [Unit Tests](#unit-tests)
-5. [End-to-End (E2E) Tests](#end-to-end-e2e-tests)
-6. [Code Coverage](#code-coverage)
+<!-- 5. [End-to-End (E2E) Tests](#end-to-end-e2e-tests)
+6. [Code Coverage](#code-coverage) -->
 
 ## Getting Started
 
