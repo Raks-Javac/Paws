@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/core/utls/helper_functions/functions.dart';
+import 'package:paws/src/features/home/controller/dog_controller.dart';
 import 'package:paws/src/features/home/presenter/breeds_list_view.dart';
 import 'package:paws/src/res/assets.dart';
 import 'package:paws/src/res/strings.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
-import 'package:paws/src/shared/logger.dart';
 import 'package:paws/src/shared/render_assets.dart';
 import 'package:paws/src/shared/search_bar.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -53,12 +54,15 @@ class HomeScreen extends StatelessWidget {
                   ).marginSymmetric(horizontal: 5),
                   addHorizontalSpacing(5),
                   Expanded(
-                    child: PawWidgetsSearchBar(
-                      controller: textEditingController,
-                      onChanged: (val) {
-                        Logger.logInfo(val);
-                      },
-                    ),
+                    child: Consumer<DogBreedProvider>(
+                        builder: (context, provider, _) {
+                      return PawWidgetsSearchBar(
+                        controller: textEditingController,
+                        onChanged: (val) {
+                          provider.filterDogBreeds(val);
+                        },
+                      );
+                    }),
                   )
                 ],
               )),

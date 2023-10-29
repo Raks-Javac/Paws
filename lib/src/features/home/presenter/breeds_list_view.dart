@@ -30,14 +30,14 @@ class BreedListView extends StatelessWidget {
             } else {
               return Column(
                 children: [
-                  for (int i = 0; i < provider.dogBreedsName.length; i++) ...[
+                  for (int i = 0; i < provider.dogBreedsNames.length; i++) ...[
                     ImageViewAndTitle(
-                      title: provider.dogBreedsName[i],
+                      title: provider.dogBreedsNames[i],
                     ),
                     addVerticalSpacing(20),
                   ],
-                  if (provider.dogBreedsName.isEmpty)
-                    const Text("No dog found ")
+                  if (provider.dogBreedsNames.isEmpty)
+                    const Text("No dog found ").center
                 ],
               );
             }

@@ -38,7 +38,10 @@ class SubBreedViewScreen extends StatelessWidget {
               width: double.infinity,
               height: 44.0.sp,
               decoration: BoxDecoration(
-                color: const Color(0xFFF5F5F5),
+                border: Border.all(
+                  color: palette!.textColor!,
+                ),
+                color: palette.backgroundColor,
                 borderRadius: BorderRadius.circular(10.0),
               ),
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),

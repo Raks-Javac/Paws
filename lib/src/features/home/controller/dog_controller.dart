@@ -6,16 +6,32 @@ class DogBreedProvider with ChangeNotifier {
   DogRepository dogRepository;
 
   DogBreedProvider(this.dogRepository);
-  List<String> dogBreedsName = [];
+  List<String> dogBreedsNames = [];
   List<String> defaultBreedList = [];
   bool firstTimeBreedLoading = false;
 
   // Function to extract dog breeds from the map
   void extractDogBreeds(Map<String, List<String>> data) {
-    dogBreedsName = data.keys.toList();
+    dogBreedsNames = data.keys.toList();
+    defaultBreedList = dogBreedsNames;
     notifyListeners();
   }
 
+  //filter dog breeed
+  void filterDogBreeds(String filter) {
+    if (filter.isNotEmpty) {
+      List<String> filteredList = dogBreedsNames
+          .where((breed) =>
+              !breed.toString().toLowerCase().contains(filter.toLowerCase()))
+          .toList();
+      dogBreedsNames = filteredList;
+    } else {
+      dogBreedsNames = defaultBreedList;
+    }
+    notifyListeners();
+  }
+
+//get all dog breed
   Future<void> getAllBreedsList() async {
     if (firstTimeBreedLoading == false) {
       GetAllDogModel listRequest1 = await dogRepository.getAllBreeds();
