@@ -3,13 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paws/src/app/app_locator.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/core/utls/helper_functions/functions.dart';
-import 'package:paws/src/res/assets.dart';
 import 'package:paws/src/res/strings.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
 import 'package:paws/src/shared/image_view.dart';
 import 'package:paws/src/shared/loader.dart';
-import 'package:paws/src/shared/render_assets.dart';
 
 class SubBreedArgument {
   final List<String>? subBreed;
@@ -39,27 +37,6 @@ class SubBreedViewScreen extends StatelessWidget {
               PawsStrings.appName,
               style: typography?.medium?.copyWith(color: palette?.primaryColor),
             ).marginOnly(bottom: 20),
-            Container(
-              width: double.infinity,
-              height: 44.0.sp,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: palette!.textColor!,
-                ),
-                color: palette.backgroundColor,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-              child: Center(
-                  child: Row(
-                children: [
-                  const PawsWidgetsRenderSvg(
-                    svgPath: searchIcon,
-                  ).marginSymmetric(horizontal: 5),
-                  addHorizontalSpacing(5),
-                ],
-              )),
-            ),
 
             //
             addVerticalSpacing(40),
