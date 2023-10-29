@@ -8,12 +8,10 @@ A Flutter app that demonstrates how to create a dog image dashboard using the Do
 2. [Project Structure](#project-structure)
 3. [Dependencies](#dependencies)
 4. [API Integration](#api-integration)
-5. [Repository Layer](#repository-layer)
-6. [View Model (Provider)](#view-model-provider)
-7. [UI Layer](#ui-layer)
-8. [Unit Tests](#unit-tests)
-9. [End-to-End (E2E) Tests](#end-to-end-e2e-tests)
-10. [Code Coverage](#code-coverage)
+3. [UI Layer](#ui-layer)
+4. [Unit Tests](#unit-tests)
+5. [End-to-End (E2E) Tests](#end-to-end-e2e-tests)
+6. [Code Coverage](#code-coverage)
 
 ## Getting Started
 
@@ -60,4 +58,17 @@ The project follows a structured architecture that includes different layers:
    - flutter_launcher_icons: for setting the app icon easily without having to go into the native folders
 
 
+## API Integration
+
+
+The network layer interacts with the Dog API to fetch dog images. API endpoints are defined in the DogAPI class in the lib/src/core/network/network_service.dart file and all the urls used in the app registered in AppUrls class 
+
     
+## Unit Tests
+
+The unit test for each class independently created is in the /test folder where each test is in their respective test || main folder E.g for network class test , (Its main folder is lib/src/core/network/network_service.dart while its test folder is test/src/core/network/network_service_test.dart)
+
+
+
+
+
