@@ -32,9 +32,7 @@ A Flutter app that demonstrates how to create a dog image dashboard using the Do
 
    ```
    flutter run
-
-
-
+   
 ## Project Structure
 
 
