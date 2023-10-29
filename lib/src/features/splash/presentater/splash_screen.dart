@@ -3,6 +3,7 @@ import 'package:paws/src/app/app_locator.dart';
 import 'package:paws/src/core/navigation/routes.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/res/assets.dart';
+import 'package:paws/src/res/colors.dart';
 import 'package:paws/src/res/strings.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
@@ -54,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               PawsStrings.appName,
               style: typography?.large?.copyWith(
-                color: palette?.backgroundColor,
+                color: PawAppColors.pawWhite,
                 fontWeight: FontWeight.bold,
               ),
             ).center

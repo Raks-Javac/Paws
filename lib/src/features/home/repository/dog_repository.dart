@@ -1,9 +1,11 @@
+import 'package:paws/src/core/network/api_response_model.dart';
 import 'package:paws/src/core/network/app_urls.dart';
 import 'package:paws/src/core/network/network_service.dart';
+import 'package:paws/src/features/home/data/get_all_breeds_model.dart';
 
 abstract class AbstractDogRepository {
-  Future<Map<String, dynamic>> getAllBreeds();
-  Future<Map<String, dynamic>> getRandomImageByBreed(String breedName);
+  Future<GetAllDogModel> getAllBreeds();
+  Future<String> getRandomImageByBreed(String breedName);
   Future<Map<String, dynamic>> getRandomImageBySubBreed(
       String breedName, String subBreed);
   Future<Map<String, dynamic>> imageListByBreed(String breedName);
@@ -17,19 +19,24 @@ class DogRepository implements AbstractDogRepository {
 
 // Get all breeds
   @override
-  Future<Map<String, dynamic>> getAllBreeds() {
+  Future<GetAllDogModel> getAllBreeds() async {
     final getAllBreedsRequest =
-        _networkService.getRequest(AppUrls.allBreedsUrl);
+        await _networkService.getRequest(AppUrls.allBreedsUrl);
 
-    return getAllBreedsRequest;
+    ApiResponse response = ApiResponse.fromJson(getAllBreedsRequest);
+
+    GetAllDogModel getAllDogsModel = GetAllDogModel.fromJson(response.message);
+
+    return getAllDogsModel;
   }
 
   @override
-  Future<Map<String, dynamic>> getRandomImageByBreed(String breedName) {
-    final getImageByBreedRequest = _networkService.getRequest(
+  Future<String> getRandomImageByBreed(String breedName) async {
+    final getImageByBreedRequest = await _networkService.getRequest(
         "${AppUrls.breedService}/$breedName${AppUrls.getRandomImageByBreedUrl}");
 
-    return getImageByBreedRequest;
+    ApiResponse response = ApiResponse.fromJson(getImageByBreedRequest);
+    return response.message;
   }
 
   @override
