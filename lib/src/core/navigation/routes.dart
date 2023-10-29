@@ -20,7 +20,13 @@ class AppRoute {
       case homeScreen:
         return _getPageRoute(routeSettings, HomeScreen());
       case subBreedView:
-        return _getPageRoute(routeSettings, const SubBreedViewScreen());
+        SubBreedArgument args = routeSettings.arguments as SubBreedArgument;
+
+        return _getPageRoute(
+            routeSettings,
+            SubBreedViewScreen(
+              subBreedArgument: args,
+            ));
 
       default:
         return _getPageRoute(

@@ -8,6 +8,7 @@ class DogBreedProvider with ChangeNotifier {
   DogBreedProvider(this.dogRepository);
   List<String> dogBreedsNames = [];
   List<String> defaultBreedList = [];
+  GetAllDogModel? allBreedData;
   bool firstTimeBreedLoading = false;
 
   // Function to extract dog breeds from the map
@@ -34,9 +35,10 @@ class DogBreedProvider with ChangeNotifier {
 //get all dog breed
   Future<void> getAllBreedsList() async {
     if (firstTimeBreedLoading == false) {
-      GetAllDogModel listRequest1 = await dogRepository.getAllBreeds();
+      GetAllDogModel listRequest = await dogRepository.getAllBreeds();
 
-      extractDogBreeds(listRequest1.breeds);
+      extractDogBreeds(listRequest.breeds);
+      allBreedData = listRequest;
       firstTimeBreedLoading = true;
       notifyListeners();
     }

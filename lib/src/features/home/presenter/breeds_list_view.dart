@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:paws/src/app/app_locator.dart';
+import 'package:paws/src/core/navigation/routes.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/core/utls/helper_functions/functions.dart';
 import 'package:paws/src/features/home/controller/dog_controller.dart';
+import 'package:paws/src/features/home/presenter/sub_breed_view.dart';
 import 'package:paws/src/shared/image_view.dart';
 import 'package:paws/src/shared/loader.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +35,12 @@ class BreedListView extends StatelessWidget {
                 children: [
                   for (int i = 0; i < provider.dogBreedsNames.length; i++) ...[
                     ImageViewAndTitle(
+                      ontap: () {
+                        appRouter.pushNamed(AppRoute.subBreedView,
+                            arguments: SubBreedArgument(
+                                subBreed: provider.allBreedData!
+                                    .breeds[provider.dogBreedsNames[i]]));
+                      },
                       title: provider.dogBreedsNames[i],
                     ),
                     addVerticalSpacing(20),

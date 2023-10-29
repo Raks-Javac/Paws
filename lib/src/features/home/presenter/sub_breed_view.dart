@@ -11,10 +11,15 @@ import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
 import 'package:paws/src/shared/loader.dart';
 import 'package:paws/src/shared/render_assets.dart';
-import 'package:paws/src/shared/search_bar.dart';
+
+class SubBreedArgument {
+  final List<String>? subBreed;
+  SubBreedArgument({this.subBreed});
+}
 
 class SubBreedViewScreen extends StatelessWidget {
-  const SubBreedViewScreen({super.key});
+  final SubBreedArgument subBreedArgument;
+  const SubBreedViewScreen({super.key, required this.subBreedArgument});
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +57,6 @@ class SubBreedViewScreen extends StatelessWidget {
                     svgPath: searchIcon,
                   ).marginSymmetric(horizontal: 5),
                   addHorizontalSpacing(5),
-                  const Expanded(
-                    child: PawWidgetsSearchBar(),
-                  )
                 ],
               )),
             ),
@@ -92,7 +94,18 @@ class SubBreedViewScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  for (int i = 0; i < 20; i++) ...[
+                  if (subBreedArgument.subBreed!.isEmpty)
+                    Column(
+                      children: [
+                        const PawsWidgetErrorWidget(),
+                        addVerticalSpacing(20),
+                        const Text("No Sub-breed found for this breed")
+                            .marginSymmetric(horizontal: 20),
+                      ],
+                    ),
+                  for (int i = 0;
+                      i < subBreedArgument.subBreed!.length;
+                      i++) ...[
                     Container(
                       height: 220.sp,
                       width: double.infinity,

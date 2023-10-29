@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paws/src/app/app_locator.dart';
-import 'package:paws/src/core/navigation/routes.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/res/colors.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
@@ -10,8 +9,10 @@ import 'package:paws/src/shared/loader.dart';
 
 class ImageViewAndTitle extends StatelessWidget {
   final String? title;
+  final Function()? ontap;
   const ImageViewAndTitle({
     required this.title,
+    this.ontap,
     super.key,
   });
 
@@ -21,7 +22,7 @@ class ImageViewAndTitle extends StatelessWidget {
         context.appTheme.extension<PawTypography>();
     return GestureDetector(
       onTap: () {
-        appRouter.pushNamed(AppRoute.subBreedView);
+        if (ontap != null) ontap!();
       },
       child: Container(
         height: 220.sp,
