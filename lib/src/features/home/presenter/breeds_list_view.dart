@@ -38,8 +38,10 @@ class BreedListView extends StatelessWidget {
                       ontap: () {
                         appRouter.pushNamed(AppRoute.subBreedView,
                             arguments: SubBreedArgument(
-                                subBreed: provider.allBreedData!
-                                    .breeds[provider.dogBreedsNames[i]]));
+                              subBreed: provider.allBreedData!
+                                  .breeds[provider.dogBreedsNames[i]],
+                              breed: provider.dogBreedsNames[i],
+                            ));
                       },
                       title: provider.dogBreedsNames[i],
                     ),

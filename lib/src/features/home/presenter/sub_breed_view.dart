@@ -1,11 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paws/src/app/app_locator.dart';
 import 'package:paws/src/core/utls/extensions/extensions.dart';
 import 'package:paws/src/core/utls/helper_functions/functions.dart';
 import 'package:paws/src/res/assets.dart';
-import 'package:paws/src/res/colors.dart';
 import 'package:paws/src/res/strings.dart';
 import 'package:paws/src/res/theme_extensions/app_palette.dart';
 import 'package:paws/src/res/theme_extensions/app_typography.dart';
@@ -15,7 +13,8 @@ import 'package:paws/src/shared/render_assets.dart';
 
 class SubBreedArgument {
   final List<String>? subBreed;
-  SubBreedArgument({this.subBreed});
+  final String? breed;
+  SubBreedArgument({this.subBreed, this.breed});
 }
 
 class SubBreedViewScreen extends StatelessWidget {
@@ -109,7 +108,8 @@ class SubBreedViewScreen extends StatelessWidget {
                       i++) ...[
                     ImageViewAndTitle(
                         future: dogRepository.getRandomImageBySubBreed(
-                            "", subBreedArgument.subBreed?[i] ?? ""),
+                            subBreedArgument.breed ?? "",
+                            subBreedArgument.subBreed?[i] ?? ""),
                         title: subBreedArgument.subBreed?[i] ?? ""),
                     addVerticalSpacing(20),
                   ]
