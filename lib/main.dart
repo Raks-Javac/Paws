@@ -31,7 +31,7 @@ class PawApp extends StatelessWidget {
                     title: PawsStrings.appName,
                     theme: PawThemes.lightTheme,
                     onGenerateRoute: AppRoute.getRoute,
-                    darkTheme: PawThemes.lightTheme,
+                    darkTheme: PawThemes.darkTheme,
                     debugShowCheckedModeBanner: false,
                     routes: AppRoute().routes,
                     navigatorKey: NavigatorKey.appNavigatorKey,
